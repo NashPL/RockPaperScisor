@@ -4,7 +4,6 @@ namespace Lib;
 
 class Game 
 {
-    private static $elements = [0 => "rock", 1 => "scissor", 2 => "paper"];
     private static $lastElement = -1;
     private static $tries = 0;
     private $difficulty;
@@ -22,25 +21,25 @@ class Game
     public function startGame($userInput) : string
     {
         $gameInput = $this->getElement();
+        print("\n == $gameInput == \n");
+        print("\n == $userInput == \n");
         return $this->compareResult($userInput, $gameInput);
     }
 
-    private function getElement() : string
+    private function getElement() : int
     {
-        $getElement = self::$elements[rand(0, 2)];
-        self::$tries++;
-        var_dump(self::$tries);
-        var_dump(self::$lastElement);
-        var_dump($getElement);
-        if ($getElement == self::$lastElement || self::$tries <= 3) {
+        $getElement = rand(0, 2);
+    
+        while ($getElement == self::$lastElement || self::$tries < 3) {
             self::$lastElement = $getElement;
-            return $this->getElement();
-        } else {
-            $getElement = $this->$elements[rand(0, 2)];
-            self::$lastElement = -1;
-            self::$tries = 0;
-            return $getElement;
-        } 
+            self::$tries++;
+            $getElement = rand(0, 2);
+        }
+
+        $getElement = rand(0, 2);
+        self::$lastElement = -1;
+        self::$tries = 0;
+        return $getElement;
     }
 
     private function compareResult($userInput, $gameInput) : string
