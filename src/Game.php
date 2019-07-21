@@ -34,6 +34,10 @@ class Game
         $this->difficulty = $difficulty;
     }
 
+    /**
+     * Gets a difficulty level
+     * @return int Difficulty level.
+     */
     public function getDifficulty() : int
     {
         return $this->difficulty;
