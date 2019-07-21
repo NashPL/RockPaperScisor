@@ -2,6 +2,8 @@
 
 namespace Lib;
 
+use phpDocumentor\Reflection\Types\Integer;
+
 /**
  * A simple Game class which will check user and computer entries and compare them to each other to declare 
  * a win, draw or a lost for a user.
@@ -27,9 +29,14 @@ class Game
      * @param Int Difficulty level. 
      * @return void
      */
-    public function setDifficulty(Integer $difficulty) : void
+    public function setDifficulty(int $difficulty) : void
     {
         $this->difficulty = $difficulty;
+    }
+
+    public function getDifficulty() : int
+    {
+        return $this->difficulty;
     }
 
     /**
@@ -50,7 +57,7 @@ class Game
      * Private function which geneartes a computer element.
      * @return Int A Integer 0-2. 
      */
-    private function getElement() : Int
+    private function getElement() : int
     {
         $getElement = rand(0, 2);
     
@@ -73,7 +80,7 @@ class Game
      * @param Int Computer input intiger.
      * @return String Outcome of a game. 
      */
-    private function compareResult(Int $userInput, Int $gameInput) : string
+    private function compareResult(int $userInput, int $gameInput) : string
     {
         switch ($userInput) {
             case "0":
