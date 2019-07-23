@@ -86,43 +86,18 @@ class Game
      */
     private function compareResult(int $userInput, int $gameInput) : string
     {
-        switch ($userInput) {
-            case "0":
-                if ($gameInput === 0) {
-                    return "DRAW";
-                } else if ($gameInput === 1) {
-                    return "USER WIN";
-                } else if ($gameInput === 2) {
-                    return "GAME WIN";
-                } else {
-                    return "SOMETHING WENT WRONG";
-                }
-                break;
-            case "1":
-                if ($gameInput === 0) {
-                    return "GAME WIN";
-                } else if ($gameInput === 1) {
-                    return "DRAW";
-                } else if ($gameInput === 2) {
-                    return "USER WIN";
-                } else {
-                    return "SOMETHING WENT WRONG";
-                }
-                break;
-            case "2":
-                if ($gameInput === 0) {
-                    return "USER WIN";
-                } else if ($gameInput === 1) {
-                    return "GAME WIN";
-                } else if ($gameInput === 2) {
-                    return "DRAW";
-                } else {
-                    return "SOMETHING WENT WRONG";
-                }
-                break;
-            default:
-                return "WRONG USER INPUT";
-                break;
+        $result = [
+            0 => 1,
+            1 => 2,
+            2 => 0
+        ];
+        
+        if ($userInput === $gameInput) {
+            return "Draw";
+        } else if ($result[$userInput] === $gameInput) {
+            return "A.I Win";
+        } else {
+            return "Player Win";
         }
     }
 }
