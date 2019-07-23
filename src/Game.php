@@ -19,8 +19,11 @@ class Game
      * the outcome if the finnal is set as a draw. 
      * @param Int Difficutly level. 
      */
-    public function __construct(Integer $difficulty = 2)
+    public function __construct(int $difficulty = 2)
     {
+        if ($difficulty < 0) {
+            throw new \InvalidArgumentException("Wrong difficulty provided");
+        }
         $this->difficulty = $difficulty;
     }
 
@@ -51,7 +54,7 @@ class Game
     * @param Int User input.
     * @return String A outcome as a string (win, draw, lost).
     */
-    public function startGame($userInput) : string
+    public function startGame(int $userInput) : string
     {
         $gameInput = $this->getElement();
         return $this->compareResult($userInput, $gameInput);
