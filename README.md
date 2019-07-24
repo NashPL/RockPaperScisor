@@ -25,6 +25,8 @@ $game->startGame(0); //Starts the game with user input of 0
 ```
 
 ### With a composer;
+Inside the library directory. 
+
 ```bash
 composer install
 ```
